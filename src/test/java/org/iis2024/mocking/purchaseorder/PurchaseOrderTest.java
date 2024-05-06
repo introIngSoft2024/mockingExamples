@@ -4,9 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 class PurchaseOrderTest {
-
   @Test
-  void shouldPurchaseWorkProperlyWhenThereAreEnoughProducts() {
+    void givenAPurchaseOrderWhenThereAreEnoughProductsThenTheProductsAreRemovedFromTheWarehouse() {
     // STEP 1: create mock object
     Warehouse warehouse = Mockito.mock(Warehouse.class);
 
@@ -23,7 +22,7 @@ class PurchaseOrderTest {
   }
 
   @Test
-  void shouldPurchaseWorkProperlyWhenThereAreNotEnoughProducts() {
+  void givenAPurchaseOrderWhenThereAreNotEnoughProductsThenTheProductsAreNotRemovedFromTheWarehouse() {
     // STEP 1: create mock object
     Warehouse warehouse = Mockito.mock(Warehouse.class);
 
