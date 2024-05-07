@@ -1,6 +1,7 @@
 package org.iis2024.mocking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atLeastOnce;
@@ -48,9 +49,16 @@ class MockedListTest {
     mockedList.add("blue");
     when(mockedList.size()).thenReturn(2);
 
+    when(mockedList.get(0)).thenReturn("first element");
+    when(mockedList.get(1)).thenReturn("second element");
+    when(mockedList.get(-1)).thenThrow(new IndexOutOfBoundsException());
+
     // STEP 3: verify the calls to the mocked object
+
     verify(mockedList, times(2)).add(anyString());
 
     assertEquals(2, mockedList.size());
+    assertEquals("first element", mockedList.get(0));
+    assertThrows(IndexOutOfBoundsException.class, () -> mockedList.get(-1)) ;
   }
 }
