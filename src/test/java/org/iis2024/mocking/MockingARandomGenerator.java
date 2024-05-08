@@ -35,7 +35,8 @@ class MockingARandomGenerator {
     // STEP 1: create mock object
     Random mockedRandom = mock(Random.class);
 
-    // STEP 2: stubbing
+    // STEP 2: stubbing. When the nextInt() method is invoked successively, the values 1, 2 and 5 are returned
+    // in sequence
     when(mockedRandom.nextInt(10)).thenReturn(1, 2, 5);
 
     // STEP 3: using the mocked object
